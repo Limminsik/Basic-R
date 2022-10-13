@@ -1,0 +1,31 @@
+# macOS일 경우 먼저 아래 Step 0 작업을 수행하세요.
+#Step 0. 기본 한글 인코딩 설정
+Sys.setlocale('LC_ALL' , 'ko_KR.UTF-8')
+# 또는 mac 터미널에서 아래 명령에서 맨 앞의 #을 빼고 실행
+# defaults write org.R-project.R force.LANG ko_KR.UTF-8
+
+# R, Rstudio, JDK 설치, KoNLP 설치의 번거로움을 한방에 해결해 드립니다.
+# 1. R 프로그램 설치
+# http://cran.r-project.org
+# 2. Rstudio 설치
+# http://www.rstudio.com
+# 3. Rstudio 실행후 다음 스크립트 실행.
+#java, rjava 설치
+install.packages("multilinguer")
+library(multilinguer)
+install_jdk()
+
+#의존성 패키지 설치
+install.packages(c("hash", "tau", "Sejong", "RSQLite", "devtools", "bit", "rex", "lazyeval", "htmlwidgets", "crosstalk", "promises", "later", "sessioninfo", "xopen", "bit64", "blob", "DBI", "memoise", "plogr", "covr", "DT", "rcmdcheck", "rversions"), type = "binary")
+
+# github 버전 설치
+install.packages("remotes")
+library(remotes)
+
+# 64bit 에서만 동작합니다.
+remotes::install_github('haven-jeon/KoNLP', upgrade = "never", INSTALL_opts=c("--no-multiarch")) 
+library(KoNLP)
+useSejongDic()
+
+a= " 바람이 부는 날에는 빈대떡을 먹고 싶다"
+extractNoun(a)
