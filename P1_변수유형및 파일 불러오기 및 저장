@@ -1,0 +1,350 @@
+##################################################################
+# 소스코드_Chap 2<2_P1>
+##################################################################
+var1 <- 1
+var2 = 2
+var3 <- "홍길동"
+var4 <- as.Date("2018-01-10")
+var5 <- "R is very interesting~!"
+################################################
+var3 <- 전우치
+var6 <- "2018-01-10"
+class(var6)
+var6 <- as.Date("2018-01-10")
+class(var6)
+var1
+var2
+var3
+var4
+var5
+
+#################################################
+## 4. 여러가지 데이터 유형들<2_P4>
+#################################################
+#1)숫자형 데이터
+1 + 2
+1.5 + 2.5
+1 + 2	# 더하기
+2.5 - 1.5	# 실수형 빼기
+3 * 2	#  * 기호는 곱하기입니다
+4 / 2	# / 기호는 나누기입니다
+10 %% 3	# %% 기호는 나머지 값을 구하는 기호입니다
+
+50000	# 0의 개수가 4개까진 그대로 보입니다
+500000	# 0의 개수가 5개부터는 지수형태로 바뀝니다
+5e2	# 어떻게 지수형으로 표시할 경우도 많습니다
+4e3	
+0.001	# 소수점 3자리까진 그대로 보입니다
+0.0002	# 소수점 4자리부터 지수형으로 바뀝니다
+5e-1
+5e-2
+
+ceiling(4.3)  # 4.3보다 큰 정수중 가장 가까운 정수( >= )
+floor(4.3)    # 4.3보다 작은 정수중 가장 가까운 정수( <= )
+
+round(5.33,0) # 소수점 0번째 자리까지 반올림하라
+round(5.33,1) # 소수점 1번째 자리까지 반올림하라
+round(5.53,0) # 소수점 0번째 자리까지 반올림하라
+trunc(5.5)    # 소수점 이하는 무조건 버려라
+trunc(5.3)    # 소수점 이하는 무조건 버려라
+
+
+
+#2) 문자형 데이터
+class(5)	# 데이터 유형을 확인합니다
+class('5')	# 숫자를 홑따옴표로 감싸면 문자가 됩니다
+class("5")	# 숫자를 쌍따옴표로 감싸도 문자가 됩니다
+class('2018-01-01')	# 날짜 같지만 문자입니다
+class('R is good~!')	# 문자열도 문자형입니다
+
+
+no1 <- 1
+no2 <- '2'
+no1 + no2
+class(no2)
+
+
+no1 <- 1000
+no2 <- 1,000
+no3 <- '1,000'
+class(no3)
+
+#)날짜형 데이터<교재2_P8>
+Sys.time()
+date1 <- as.Date("2018-01-12")
+date1
+date2 <- as.Date("2018-01-01")
+date2
+date1 - date2
+difftime(date1,date2)
+
+
+install.packages("lubridate")
+library(lubridate)
+now( )
+date3 <- now( )
+year(date3)
+month(date3)
+day(date3)
+
+
+
+#4 NA형과 NULL형<교재2_P9>
+no1 <- 3
+no2 <- NA
+no1
+no2
+no1 + no2
+no1 > no2
+sum(1,2,NA)	#  sum( )함수는 합계를 구하는 함수입니다
+sum(1,2,NULL)
+
+x <- NA
+sum(1,2,x)	
+sum(1,2,x,na.rm=TRUE)	# NA값을 제거합니다
+x[is.na(x)] <- 0		# NA값을 0으로 바꿉니다
+x
+sum(1,2,x)
+
+
+#5.여러건의 데이터를 한꺼번에 담는 특별한 그릇들<교재2_P12>
+#1) Vector(벡터)
+#(1) 벡터 개념과 만들기
+
+ var1 <- 1  # 1을 저장합니다 
+ var1 <- 2  # 2를 저장합니다 
+ var1 <- 3  # 3을 저장합니다 
+ var1
+
+ var1 <- c(1,2,3)
+ var1
+
+ is.vector(var1)
+
+class(var1)
+var2 <- c(1,2,'3')
+var2
+class(var2)
+
+# (2) 벡터 데이터 조회하기
+ var3 <- c('새우깡','감자깡','고구마깡','맛동산','짱구')
+ 
+ # 특정 데이터 호출 방법:벡터이름[행번호]
+ var3[2]
+var3[-2]   # 특정 행만 빼고 조회하기
+var3[2:4]  # 범위 주고 조회하기
+var3[-2:-4]  # 범위 주고 조회하기
+
+var5 <- c(1,3,5,7,9)
+3 %in% var5   #var5 안에 3 이 있는가?
+4 %in% var5   #var5 안에 4가 있는가?
+Fruit <- c("사과","단감","귤","파인애플","apple")
+"감" %in% Fruit
+"단감" %in% Fruit
+"p" %in% Fruit
+
+
+#(3) 벡터 데이터 연산하기
+
+vec1 <- c(1,2,3)
+vec2 <- c(4,5,6)
+vec1 + vec2
+vec3 <- c(1,2,3,4)
+vec1 + vec3
+length(vec1)
+length(vec3)
+
+vec1
+vec2
+vec3
+
+union(vec1,vec2)
+setdiff(vec3, vec1)
+intersect(vec2, vec3)
+
+
+# 2) 행렬 (matrix)<교재2_P17>
+mat1 <- matrix(c(1,2,3,4) )
+mat1
+
+mat2 <- matrix(c(1,2,3,4), nrow=2 ) #nrow=행의 갯
+mat2
+mat3 <- matrix(c(1,2,3,4), nrow=2, byrow=TRUE ) #nrow=행의 갯수
+mat3
+
+#(2) matrix 조회하기
+mat4 <- matrix(c(1:20), nrow=4)
+mat4
+mat4[c(1,3) , c(2,3)]
+mat4[ , c(2,3)]
+mat4[c(1,3) , ]
+
+
+#3) 배열(array)<교재2_P21>
+array1 <- array(c(1:12), dim=c(2,2,3) ) # dim=c(가로,세로,높이)
+array1
+
+#(2) array 조회하기
+array1
+array1[ 1 , 1 , 1 ]
+array1[ 1 , 1 , 2 ]
+array1[ 1 , 2 , 2 ]
+
+#4) 리스트형 ( list )<교재2_P23>
+list1 <- list(학번=1001,이름='홍길동',생일='1980-07-15')
+list1
+
+#(2) list 유형 조회하기
+
+list2 <- list(STUDNO=1001,NAME='홍길동',BIRTH='1980-07-15')
+list2
+list2$STUDNO
+list2$NAME
+list2$birth
+
+
+#5) 데이터 프레임형
+studno <- c(1001,1002,1003)
+name <- c("홍길동","일지매","전우치")
+birth <- c("1980-07-15","1985-10-23","1983-05-05")
+member <- data.frame(STUDNO=studno,NAME=name,BIRTH=birth)
+member
+
+#2) data frame 조회하기
+member
+member$STUDNO
+member$NAME
+member$birth
+member$BIRTH
+
+member
+member[c(1,3), c(1,2) ]
+
+
+#(3) data frame 합치기 - merge
+
+d1 <- data.frame(name=c("홍길동","일지매","전우치"),
+                  height=c(180,175,182) )
+
+d2 <- data.frame(name=c("홍길동","강감찬","전우치") ,
+                  weight=c(82,75,90) )
+d1
+d2
+
+merge(d1, d2) #d1을 기준으로 d2와 공통적으로 가진 데이터만 출력
+
+merge(d1, d2, all=T) #d1을 기준으로 d2와 모든 데이터 출력
+
+#(4) 새로운 행과 열 추가하기
+
+hang <- data.frame( STUDNO = 1004,
+                    NAME = "강감찬" ,
+                    BIRTH = '2001-05-25' ) 
+member <- rbind(member, hang)
+member
+
+member <- cbind(member , data.frame(grade=c(1,2,3,4)))
+member
+
+######################################################################
+# 소스코드_Chap 3<교재3_P2> 데이터불러오기와 저장하기
+######################################################################
+
+setwd("c:\\temp")
+list.files( )
+
+txt1 <- readLines("구매후기.txt")
+txt1
+
+txt2 <- readLines("구매후기_utf8.txt")
+txt2
+
+txt3 <- readLines("구매후기_utf8.txt",encoding="UTF-8")
+txt3
+
+txt4 <- read.table("전공.txt")
+txt4
+
+txt5 <- read.table("전공.txt" , header=TRUE )
+txt5
+
+txt6 <- read.table("전공2.txt" , header=TRUE , sep=":" )
+txt6
+
+txt7 <- read.csv("전공3.txt")
+txt7
+
+txt8 <- read_excel("c:\\temp\\전공4.xls", sheet = 1) 
+txt8
+
+txt9 <- read_excel("c:\\temp\\전공4.xls", sheet ="2학기") 
+txt9
+
+no1 <- scan( )
+
+txt10 <- scan( )
+txt10 <- scan( what=' ' )
+
+txt11 <- readline( )
+txt11
+txt12 <- readline('뭐가 좋아요? : ')
+txt12
+
+#####################################################
+list.files( )
+list.files(pattern="pdf$")
+
+install.packages("pdftools")
+library("pdftools")
+
+txt13 <- pdf_text("pdf_ex1.pdf")
+cat( txt13[1] )
+
+######################################################
+
+#spss 파일 형식 불러오기
+install.packages("foreign")
+library (foreign)
+spss01 <- read.spss("spss01.sav",  to.data.frame=TRUE)
+
+# SAS 파일 불러오기
+install.packages("foreign")
+library (foreign)
+sas01 <- read.ssd(libname="c:/temp/, sectionnames="retail",  
+         sascmd="C:/Program  Files/SAS/SAS 9.1/sas.exe");
+
+
+# 6 다양한 유형으로 저장하기<교재3_P11>
+
+#2) write.table( ) 
+txt14 <- read.table("전공.txt", header=T)
+txt14
+write(txt14 , "txt14.txt" )
+write.table(txt14 , "txt14.txt" )
+
+#3) write.csv( )
+txt14
+write.csv(txt14 , 'txt14.csv' )
+
+#4) xlsx 형식으로 저장하기
+
+txt14
+write.xlsx(txt14 ,"txt14.xls")
+
+#5) spss / sas 형태로 저장하기
+
+install.packages("foreign")
+library("foreign")
+
+write.foreign(txt14,  datafile="sas_01.txt", 
+              codefile="sas_01.sas", package="SAS")
+
+write.foreign(txt14,  datafile="spss_01.txt", 
+              codefile="spss_01.sps", package="SPSS")
+
+#6) 그림으로 저장하기<교재P102>
+
+x <- c(1,2,3,4,5)
+plot(x)
+
+savePlot("x.png" , type="png")
