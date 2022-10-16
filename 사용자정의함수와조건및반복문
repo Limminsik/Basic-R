@@ -1,0 +1,168 @@
+#######################################################################
+# 소스코드_Chap 4
+#######################################################################
+# 1. 사용자 정의 함수
+
+myf_1 <- function(a) {
+                       b <- a^3     
+                       return(b)
+                     }
+myf_1(3)
+
+myf_2 <- function(a,b) {
+                        c <- a*b   
+                        return(c) 
+                       }
+myf_2(4,5)
+
+
+## if ~ else 문 예제 - 1
+
+if_ex1 <- function(x) { if ( x > 5 ) {
+                                      return(1) 
+                                    }
+                        else { 
+                               return(0)
+                             }
+                       }
+
+
+# if ~ else 예제 - 2
+
+if_ex2 <- function(x) {
+                       if ( x %% 3 == 0 ) {
+                                            y <- x^2
+                                            return(y) 
+                                           }
+                       else {
+                             y <- x*0
+                             return(y) 
+                            }
+                       }
+
+#ifelse 문장 예
+
+if_ex3 <- function(x) { ifelse( x %% 3 == 0 , x^2 , x*0 ) }
+
+
+
+# 조건이 3개 이상일 경우
+
+fruits <- function(x) {
+          if ( x == "사과" )    { print("Good") }
+          else if ( x == "감" ) { print("Very Good") }
+          else if ( x == "귤" ) { print("SOSO") }
+          else { print("다시입력") }
+                       }
+
+fruits("사과")
+fruits("감")
+fruits("귤")
+fruits("감자")
+
+
+# 조건이 2 개 이상 있을 경우
+# ! 기호 사용 예
+
+not_ex1 <- function(x) {
+                         if ( x != 0 ) { 
+                                          print("볼 낯이 없음")
+                                        }
+                         else {
+                                print( " 만나자" )
+                              }
+                        }
+ 
+# & 기호 사용 예
+
+amp_ex1 <- function(a,b) {
+                           if ( ( a > 5) & ( b > 5)) {
+                                                      c <- a + b
+                                                      print(c)
+                                                     }
+                           else {
+                                   c <- a * b
+                                   print(c)
+                                 } 
+                           }              
+
+#(3) | 기호 사용 예제
+bar_ex1 <- function(x,y) {
+                          if (( x < 0) | ( y < 0)) {
+                                                     z <- x + y
+                                                     return(z)
+                                                    }
+                          else {
+                                 z <- x * y
+                                 return(z)
+                                }
+                          }
+
+
+
+
+# while 반복문 예제 -1
+
+while_ex1 <- function(x) {
+                          no = 1
+                          while (x >= no) { 
+                                          print(no)
+                                          no <- no + 1
+                                         }
+                          }
+
+# 1부터 입력받은 수까지의 합 구하기
+
+while_ex2 <- function(x) {
+                          hap <- 0
+                          no <- 1
+                          while (x >= no) { 
+                                            hap = hap + no
+                                            no <- no + 1
+                                          }
+                          print(hap)
+                          }
+
+while_ex2(3)
+
+# break / next 옵션 활용하기
+
+char <- c('a','b','c','d','e')
+cnt <- length(char)
+x <- 0
+while ( x < cnt) { 
+                   x <- x + 1 
+                   if(char[x]=='c') break
+                   print(char[x])
+                  }
+
+char <- c('a','b','c','d','e')
+cnt <- length(char)
+x <- 0
+while ( x < cnt) { 
+                   x <- x + 1 
+                   if(char[x]=='c') next
+                   print(char[x])
+                  }
+
+# for( ) 반복문 예제 - 1
+
+for_ex1 <- function(x) {
+                         for ( i in 1 : x ) {
+                                             print(i)
+                                            }
+                        }
+for_ex1(3)
+
+# for( ) 반복문 예제 - 2
+for_ex2 <- function(x) {
+                         hap <- 0
+                         for ( i in 1 : x ) {
+                                             hap <- hap + i
+                                            }
+                         print(hap)
+                        }
+
+for_ex2(10)
+for_ex2(100)
+
